@@ -51,12 +51,36 @@ typedef struct
 //                  Type Define
 //////////////////////////////////////////////////////
 
+typedef enum
+{
+    YS_ID_IMU_TEMP             = (uint8_t)0x01,
+    YS_ID_SECOND_IMU_TEMP      = (uint8_t)0x02,
+    YS_ID_FREE_ACCEL           = (uint8_t)0x11,
+    YS_ID_SPEED_INCREMENT      = (uint8_t)0x12,
+    YS_ID_SECOND_ACCEL         = (uint8_t)0x18,
+    YS_ID_SECOND_ANGLE         = (uint8_t)0x28,
+    YS_ID_QUATERNION_INCREMENT = (uint8_t)0x42,
+    YS_ID_ACCEL                = (uint8_t)0x10,
+    YS_ID_ANGLE                = (uint8_t)0x20,
+    YS_ID_MAGNETIC             = (uint8_t)0x30,
+    YS_ID_RAW_MAGNETIC         = (uint8_t)0x31,
+    YS_ID_EULER                = (uint8_t)0x40,
+    YS_ID_QUATERNION           = (uint8_t)0x41,
+    YS_ID_UTC                  = (uint8_t)0x50,
+    YS_ID_SAMPLE_TIMESTAMP     = (uint8_t)0x51,
+    YS_ID_DATA_READY_TIMESTAMP = (uint8_t)0x52,
+    YS_ID_LOCATION             = (uint8_t)0x60,
+    YS_ID_HIGH_PRECI_LOCATION  = (uint8_t)0x68,
+    YS_ID_SPEED                = (uint8_t)0x70,
+} ys_data_id_t;
+
 typedef struct 
 {
     uint16_t tid;
     ys_sensor_data_t *result;
     void *user_data;
-    uint8_t field_li[64]; /* sensor data id list */
+    /* sensor data valid id list, refer 'ys_data_id_t' */
+    uint8_t field_li[64];
     uint8_t field_cnt;
 } ys_result_callback_params_t;
 
